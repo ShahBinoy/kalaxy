@@ -10,9 +10,11 @@
 - hosts: raspbian
   roles:
     - raspbian-swap-down
+    - raspbian-static-ip
 - hosts: ubuntu
   roles:
     - ubuntu-swap-down
+    - ubuntu-static-ip
 - hosts: all
   roles:
     - docker-up
