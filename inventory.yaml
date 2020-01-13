@@ -37,6 +37,8 @@ all:
       vars:
         ansible_ssh_user: pi
         boot_directory: /boot
+        docker_apt_repository: "deb https://download.docker.com/linux/raspbian stretch stable"
+        docker_version: "5:18.09.0~3-0~raspbian-stretch"
     ubuntu:
       hosts:
         node-1: {}
