@@ -1,0 +1,16 @@
+---
+- name: Updating hostnames
+  gather_facts: true
+  hosts: ubuntu
+  tasks:
+    - name: change hostname to Inventory value {{ inventory_hostname }}
+      hostname:
+        name: "{{ inventory_hostname }}"
+    - name: Set hostname
+      lineinfile:
+        state: present
+        dest: /etc/hosts
+        regexp: '^127\.0\.0\.1[ \t]+localhost'
+        line: "127.0.0.1 localhost {{ inventory_hostname }}"
+    - name: Reboot machine
+      reboot:

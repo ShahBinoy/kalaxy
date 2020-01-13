@@ -1,0 +1,38 @@
+---
+- name: Configure netplan on hosts
+  hosts: ubuntu
+  any_errors_fatal: true
+  roles:
+    - role: ansible-netplan
+      become: yes
+      netplan_enabled: true
+      netplan_config_file: /etc/netplan/01-default-ip.yaml
+      netplan_renderer: networkd
+      netplan_configuration:
+        network:
+          version: 2
+          ethernets:
+            eth0:
+              addresses:
+                - "{{ ansible_eth0.ipv4.address }}/24"
+                - "{{ ansible_eth0.ipv4.address }}/22"
+              nameservers:
+                addresses:
+                  - 10.200.6.15
+                  - 10.200.7.127
+                  - 192.168.1.1
+                search:
+                  - Vibrenthealth.com
+              routes:
+                - to: 0.0.0.0/0
+                  via: 192.168.1.1
+                  metric: 100
+                - to: 0.0.0.0/0
+                  via: 192.168.0.1
+                  metric: 100
+                - to: 0.0.0.0/0
+                  via: 10.200.6.15
+                  metric: 100
+                - to: 0.0.0.0/0
+                  via: 10.200.7.127
+                  metric: 100

@@ -1,12 +1,5 @@
 ---
-- name: 'install docker'
+- name: install docker from script at https://get.docker.com/
   command: 'bash -c "curl -fsSL https://get.docker.com/ | sh"'
-- name: update environment variables
-  lineinfile:
-    insertafter: '^\s*\[\s*Service\s*\]'
-    line: "Environment='HTTP_PROXY={{ proxy_url }}' 'HTTPS_PROXY={{ proxy_url }}' 'NO_PROXY={{ no_proxy }}'"
-    path: /lib/systemd/system/docker.service
-    regexp: '^\s*Environment\s*='
-  notify: restart Docker
-  when: proxy_url != None
+
 - meta: flush_handlers

@@ -10,31 +10,9 @@
 - hosts: raspbian
   roles:
     - raspbian-swap-down
-    - raspbian-static-ip
 - hosts: ubuntu
   roles:
     - ubuntu-swap-down
-    - role: ansible-netplan
-      become: yes
-      netplan_enabled: true
-      netplan_config_file: /etc/netplan/01-default-ip.yaml
-      netplan_renderer: networkd
-      netplan_configuration:
-        network:
-          version: 2
-          ethernets:
-            eth0:
-              addresses:
-                - {{ ansible_eth0.ipv4.address }}
-              routes:
-                - to: 0.0.0.0/0
-                  via: 192.168.1.1
-                  metric: 100
-                - to: 0.0.0.0/0
-                  via: 192.168.0.1
-                  metric: 100
-
-    
 - hosts: all
   roles:
     - docker-up

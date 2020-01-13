@@ -1,0 +1,24 @@
+Nmap scan report for 192.168.1.120
+Host is up (0.00029s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.9p1 Raspbian 10 (protocol 2.0)
+MAC Address: DC:A6:32:20:CF:A5 (Raspberry Pi Trading)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+-------------------------------------------------------------------
+Nmap scan report for V-00253.vibrenthealth.com (192.168.1.121)
+Host is up (0.00029s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.0p1 Ubuntu 6build1 (Ubuntu Linux; protocol 2.0)
+MAC Address: DC:A6:32:20:CF:93 (Raspberry Pi Trading)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+-------------------------------------------------------------------
+Nmap scan report for 192.168.1.122
+Host is up (0.00028s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.0p1 Ubuntu 6build1 (Ubuntu Linux; protocol 2.0)
+MAC Address: DC:A6:32:20:CE:43 (Raspberry Pi Trading)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+-------------------------------------------------------------------

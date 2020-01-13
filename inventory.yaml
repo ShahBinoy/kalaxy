@@ -2,11 +2,11 @@
 all:
   hosts:
     # Use only IP addresses here!
-    node-0:
+    rk8s-master:
       ansible_host: 192.168.1.120
-    node-1:
+    rk8s-node1:
       ansible_host: 192.168.1.121
-    node-2:
+    rk8s-node2:
       ansible_host: 192.168.1.122
   children:
     k3s_master:
@@ -17,30 +17,30 @@ all:
     k8s_master:
       hosts:
         # Only one master!
-        node-0: {}
+        rk8s-master: {}
     k8s_worker:
       hosts:
-        node-1: {}
-        node-2: {}
+        rk8s-node1: {}
+        rk8s-node2: {}
     raspberry_pi:
       hosts:
-        node-0: {}
-        node-1: {}
-        node-2: {}
+        rk8s-master: {}
+        rk8s-node1: {}
+        rk8s-node2: {}
       vars:
       #arm_64bit: 1
       #arm_freq: 1750
       #over_voltage: 2
     raspbian:
       hosts:
-        node-0: {}
+        rk8s-master: {}
       vars:
         ansible_ssh_user: pi
         boot_directory: /boot
     ubuntu:
       hosts:
-        node-1: {}
-        node-2: {}
+        rk8s-node1: {}
+        rk8s-node2: {}
       vars:
         ansible_ssh_user: ubuntu
         boot_directory: /boot/firmware
