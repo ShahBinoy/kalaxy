@@ -1,5 +1,6 @@
 ---
-- hosts: ubuntu  
+- name: Configure netplan on hosts 
+  hosts: ubuntu  
   any_errors_fatal: true
   roles: 
     - role: ansible-netplan
