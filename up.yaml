@@ -17,7 +17,7 @@
     - role: ansible-netplan
       become: yes
       netplan_enabled: true
-      netplan_config_file: /etc/netplan/01-static-ip.yaml
+      netplan_config_file: /etc/netplan/01-default-ip.yaml
       netplan_renderer: networkd
       netplan_configuration:
         network:
