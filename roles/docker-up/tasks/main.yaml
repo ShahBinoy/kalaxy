@@ -1,5 +1,22 @@
 ---
+- name: check if rules file exists
+  stat:
+    path: /etc/apt/sources.list.d/docker.list
+  register: docker_src_exists
 - name: install docker from script at https://get.docker.com/
   command: 'bash -c "curl -fsSL https://get.docker.com/ | sh"'
-
+  when: docker_src_exists.stat.exists == false
+- name: update docker source distro to disco
+  replace:
+    dest: /etc/apt/sources.list.d/docker.list
+    regexp: "eoan"
+    replace: "disco"
+  when:
+    - docker_src_exists.stat.exists == true
+  register: docker_configured
+- name: install docker packages
+  apt:
+    name:
+      - docker-ce
+  register: docker_installed
 - meta: flush_handlers

@@ -1,35 +1,8 @@
 ---
-- name: add environment variable NO_PROXY
-  lineinfile:
-    line: "{{ item }}={{ no_proxy }}"
-    path: /etc/environment
-    regexp: '^\s*{{ item }}\s*='
-  notify: reboot system
-  when: proxy_url != None
-  with_items:
-    - no_proxy
-    - NO_PROXY
-- name: add environment variables HTTP_PROXY and HTTPS_PROXY
-  lineinfile:
-    line: "{{ item }}={{ proxy_url }}"
-    path: /etc/environment
-    regexp: '^\s*{{ item }}\s*='
-  notify: reboot system
-  when: proxy_url != None
-  with_items:
-    - http_proxy
-    - HTTP_PROXY
-    - https_proxy
-    - HTTPS_PROXY
-- name: add apt proxies
-  template:
-    dest: /etc/apt/apt.conf.d/95proxies
-    src: 95proxies.j2
-  when: proxy_url != None
 - name: update and upgrade OS
   apt:
     force_apt_get: yes
-    update_cache: yes
+    update_cache: no
     upgrade: dist
   notify: reboot system
 - name: install common apt packages

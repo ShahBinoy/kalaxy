@@ -1,17 +1,12 @@
 ---
-- hosts: raspberry_pi
-  roles:
-    - raspberry-pi-up
-- hosts:
-    - raspbian
-    - ubuntu
-  roles:
-    - debian-up
 - hosts: raspbian
   roles:
+    - raspberry-pi-up
+    - debian-up
     - raspbian-swap-down
 - hosts: ubuntu
   roles:
+    - debian-up
     - ubuntu-swap-down
 - hosts: all
   roles:
