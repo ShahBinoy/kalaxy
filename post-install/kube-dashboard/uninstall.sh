@@ -1,0 +1,11 @@
+export KUBECONFIG=~/.kube/k8s-config.yaml
+KUBE_NS=$1
+kubectl delete deployment kubernetes-dashboard --namespace=$KUBE_NS 
+kubectl delete service kubernetes-dashboard  --namespace=$KUBE_NS 
+kubectl delete role kubernetes-dashboard-minimal --namespace=$KUBE_NS 
+kubectl delete rolebinding kubernetes-dashboard-minimal --namespace=$KUBE_NS
+kubectl delete sa kubernetes-dashboard --namespace=$KUBE_NS 
+kubectl delete secret kubernetes-dashboard-certs --namespace=$KUBE_NS
+kubectl delete secret kubernetes-dashboard-key-holder --namespace=$KUBE_NS
+kubectl delete deployment dashboard-metrics-scraper --namespace=$KUBE_NS 
+kubectl delete service dashboard-metrics-scraper  --namespace=$KUBE_NS 

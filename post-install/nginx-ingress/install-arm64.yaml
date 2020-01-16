@@ -1,0 +1,9 @@
+controller:
+  image:
+    repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller-arm64
+    tag: "0.26.2"
+rbac:
+  create: true
+defaultBackend:
+  image:
+    repository: k8s.gcr.io/defaultbackend-arm64

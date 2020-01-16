@@ -1,0 +1,18 @@
+image: arm64v8/traefik
+imageTag: 1.7
+rbac.enabled: true
+ssl:
+  enabled: true
+  enforced: true
+  generateTLS: true
+kubernetes:
+  namespaces:
+    - default
+    - kube-system
+    - kubernetes-dashboard
+dashboard:
+  enabled: true
+  domain: traefik.k8s.rpi
+  auth:
+    basic:
+      test: $apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/
